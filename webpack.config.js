@@ -11,12 +11,17 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.scss$/, 
+                test: /\.scss$/,
                 use: ExtractTextPlugin.extract({
-                    fallbackLoader: 'style-loader',
-                    loader: ['css-loader','sass-loader'],
+                    fallback: 'style-loader',
+                    use: ['css-loader','sass-loader'],
                     publicPath: '/dist'
                 })
+            },
+            {
+              test: /\.js$/,
+              exclude: /node_modules/,
+              loader: "babel-loader"
             }
         ]
     },
